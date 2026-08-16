@@ -21,7 +21,7 @@ fail() {
 
 command -v jq >/dev/null 2>&1 || fail 'jq is required'
 bash -n "$SCRIPT"
-grep -Fq "VERSION='2.3.7-shadowrocket-passwall-xhttp-split (2026.08.15)'" "$SCRIPT" || fail 'release version is not 2.3.7'
+grep -Fq "VERSION='2.3.7-r1-shadowrocket-passwall-xhttp-split (2026.08.15)'" "$SCRIPT" || fail 'release version is not 2.3.7-r1'
 grep -Fq 'exec bash "$WORK_DIR/argox.sh" "\$@"' "$SCRIPT" ||
   fail 'installed argox launcher does not forward to the installed script'
 if grep -Fq 'bash /usr/bin/argox' "$SCRIPT"; then
@@ -384,7 +384,7 @@ jq -e \
     .outbounds[0].streamSettings.xhttpSettings.extra.downloadSettings.port == 443 and
     .outbounds[0].streamSettings.xhttpSettings.extra.downloadSettings.network == "xhttp" and
     .outbounds[0].streamSettings.xhttpSettings.extra.downloadSettings.security == "tls" and
-    .outbounds[0].streamSettings.xhttpSettings.extra.downloadSettings.xhttpSettings.mode == "stream-down" and
+    (.outbounds[0].streamSettings.xhttpSettings.extra.downloadSettings.xhttpSettings | has("mode") | not) and
     .outbounds[0].streamSettings.xhttpSettings.extra.downloadSettings.xhttpSettings.host == "xhttp.example.com" and
     .outbounds[0].streamSettings.xhttpSettings.extra.downloadSettings.tlsSettings.serverName == "xhttp.example.com" and
     .outbounds[0].streamSettings.xhttpSettings.extra.downloadSettings.tlsSettings.echConfigList == $ech and
@@ -394,6 +394,9 @@ jq -e \
 
 [[ "$(stat -c '%a' "$CLIENT_JSON")" == '600' ]] ||
   fail 'native Xray client permissions must be 0600'
+
+! jq -e '.. | objects | select(has("downloadSettings")) | .downloadSettings.xhttpSettings.mode == "stream-down"' "$CLIENT_JSON" >/dev/null 2>&1 ||
+  fail 'downloadSettings must not configure unsupported XHTTP mode=stream-down'
 
 ENABLE_ECH='n'
 ech_runtime_values
@@ -535,7 +538,7 @@ assert down['address'] == 'speed.cloudflare.com'
 assert down['port'] == 443
 assert down['network'] == 'xhttp'
 assert down['security'] == 'tls'
-assert down['xhttpSettings']['mode'] == 'stream-down'
+assert 'mode' not in down['xhttpSettings']
 assert down['xhttpSettings']['host'] == 'xhttp.example.com'
 assert down['xhttpSettings']['path'] == '/argox-xh'
 assert down['tlsSettings']['serverName'] == 'xhttp.example.com'
