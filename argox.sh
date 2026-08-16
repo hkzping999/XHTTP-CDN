@@ -35,8 +35,8 @@ SERVICE_FIREWALL_STATE_FILE="${FIREWALL_STATE_DIR}/service_ports.list"
 # （如 /dev/fd/63），不是可重复读取的普通文件；create_shortcut() 需要用
 # 这个地址重新拉取一份完整脚本落盘，而不是尝试从已经被读过一部分的管道
 # 里 cp 自己（那样会读到不完整/被截断的内容）。
-ARGOX_REPO_URL='https://github.com/hkzping999/Argo-reality-pqc'
-ARGOX_RAW_URL='https://raw.githubusercontent.com/hkzping999/Argo-reality-pqc/main/argox.sh'
+ARGOX_REPO_URL='https://github.com/hkzping999/XHTTP-CDN'
+ARGOX_RAW_URL='https://raw.githubusercontent.com/hkzping999/XHTTP-CDN/main/argox.sh'
 TLS_SERVER='addons.mozilla.org'
 # Reality 客户端连接地址：留空则使用 SERVER_IP；不要与 Reality 伪装 SNI/TLS_SERVER 混用。
 REALITY_DOMAIN=${REALITY_DOMAIN:-''}
@@ -100,14 +100,14 @@ E[0]="Language:\n 1. English (default) \n 2. 简体中文"
 C[0]="${E[0]}"
 E[1]="VLESS + XHTTP packet-up + ML-KEM-768/X25519 PQC + ECH + Argo Tunnel + Cloudflare CDN; native Xray and Mihomo client outputs"
 C[1]="新增 VLESS + XHTTP packet-up + ML-KEM-768/X25519 PQC + ECH + Argo Tunnel + Cloudflare CDN 一体化链路，并输出原生 Xray 与 Mihomo 客户端配置"
-E[2]="Project to create Argo tunnels and Xray specifically for VPS, detailed:[https://github.com/hkzping999/Argo-reality-pqc]\n Features:\n\t • Allows the creation of Argo tunnels via Token, Json and ad hoc methods. Safe edition: do not obtain json via third-party websites; use Cloudflare official dashboard only.\n\t • Extremely fast installation method, saving users time.\n\t • Support system: Ubuntu, Debian, CentOS, Alpine and Arch Linux 3.\n\t • Support architecture: AMD,ARM and s390x\n"
-C[2]="本项目专为 VPS 添加 Argo 隧道及 Xray,详细说明: [https://github.com/hkzping999/Argo-reality-pqc]\n 脚本特点:\n\t • 允许通过 Token, Json 及 临时方式来创建 Argo 隧道,安全版不建议通过第三方网站获取 json，请仅使用 Cloudflare 官方后台生成 Token/Json\n\t • 极速安装方式,大大节省用户时间\n\t • 智能判断操作系统: Ubuntu 、Debian 、CentOS 、Alpine 和 Arch Linux,请务必选择 LTS 系统\n\t • 支持硬件结构类型: AMD 和 ARM\n"
+E[2]="Project to create Argo tunnels and Xray specifically for VPS, detailed:[https://github.com/hkzping999/XHTTP-CDN]\n Features:\n\t • Allows the creation of Argo tunnels via Token, Json and ad hoc methods. Safe edition: do not obtain json via third-party websites; use Cloudflare official dashboard only.\n\t • Extremely fast installation method, saving users time.\n\t • Support system: Ubuntu, Debian, CentOS, Alpine and Arch Linux 3.\n\t • Support architecture: AMD,ARM and s390x\n"
+C[2]="本项目专为 VPS 添加 Argo 隧道及 Xray,详细说明: [https://github.com/hkzping999/XHTTP-CDN]\n 脚本特点:\n\t • 允许通过 Token, Json 及 临时方式来创建 Argo 隧道,安全版不建议通过第三方网站获取 json，请仅使用 Cloudflare 官方后台生成 Token/Json\n\t • 极速安装方式,大大节省用户时间\n\t • 智能判断操作系统: Ubuntu 、Debian 、CentOS 、Alpine 和 Arch Linux,请务必选择 LTS 系统\n\t • 支持硬件结构类型: AMD 和 ARM\n"
 E[3]="Input errors up to 5 times.The script is aborted."
 C[3]="输入错误达5次,脚本退出"
 E[4]="UUID should be 36 characters, please re-enter (\${a} times remaining)"
 C[4]="UUID 应为36位字符,请重新输入 (剩余\${a}次)"
-E[5]="The script supports Debian, Ubuntu, CentOS, Alpine, Armbian or Arch systems only. Feedback: [https://github.com/hkzping999/Argo-reality-pqc/issues]"
-C[5]="本脚本只支持 Debian、Ubuntu、CentOS、Alpine、Armbian 或 Arch 系统，问题反馈:[https://github.com/hkzping999/Argo-reality-pqc/issues]"
+E[5]="The script supports Debian, Ubuntu, CentOS, Alpine, Armbian or Arch systems only. Feedback: [https://github.com/hkzping999/XHTTP-CDN/issues]"
+C[5]="本脚本只支持 Debian、Ubuntu、CentOS、Alpine、Armbian 或 Arch 系统，问题反馈:[https://github.com/hkzping999/XHTTP-CDN/issues]"
 E[6]="Port Hopping range (current: \${_val}) [leave blank to disable]"
 C[6]="端口跳跃范围 (当前：\${_val}) [留空则禁用]"
 E[7]="Install dependence-list:"
