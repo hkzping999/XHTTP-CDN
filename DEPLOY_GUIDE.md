@@ -14,7 +14,7 @@
 你要用的一键命令是：
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/hkzping999/Argo-reality-pqc/main/argox.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/hkzping999/XHTTP-CDN/main/argox.sh)
 ```
 
 这条命令能不能跑通，只取决于两件事：
